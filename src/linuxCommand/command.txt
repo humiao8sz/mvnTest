@@ -1,2 +1,4 @@
-jstack -l 4089 >1.txt
+jstack -l pid >1.txt
 jmap -dump:format=b,file=heap.bin pid
+top -Hp pid //查询进程中各线程的CPU和内存占用情况
+jstack pid | grep 5431(线程ID，十六进制) 
