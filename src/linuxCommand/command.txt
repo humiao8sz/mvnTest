@@ -1,0 +1,2 @@
+jstack -l 4089 >1.txt
+jmap -dump:format=b,file=heap.bin pid
