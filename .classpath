@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/lib/netty-4.1.8.Final/jar/netty-example-4.1.8.Final.jar"/>
+	<classpathentry kind="lib" path="D:/lib/proto/protobuf-java-2.5.0.jar"/>
+	<classpathentry kind="lib" path="D:/WorkSpace/PalaceM2_cn_cn_Server/WebRoot/WEB-INF/lib/jedis-2.9.0.jar" sourcepath="D:/lib/jedis-jedis-2.7.2.zip">
+		<attributes>
+			<attribute name="source_encoding" value="UTF-8"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="D:/WorkSpace/PalaceM2_cn_cn_Server/WebRoot/WEB-INF/lib/commons-pool2-2.4.2.jar"/>
+	<classpathentry kind="lib" path="D:/lib/jna-4.1.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk8"/>
+	<classpathentry kind="output" path="target/classes"/>
+</classpath>

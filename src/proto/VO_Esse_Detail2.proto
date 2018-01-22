@@ -1,0 +1,16 @@
+option java_outer_classname = "VO_Esse_Detail2Entity";//生成的数据访问类的类名  
+message VO_Esse_Detail2{
+	message VO_Esse_Prop_Detail2{
+		required int32  propType    = 1; // 属性类型
+		required int32  propValue   = 2; // 属性值
+	}	
+	required int32  rid = 1; // 随从ID
+	required int32  lv = 2; // 随从等级
+	required int64  exp = 3; // 随从经验
+	required int32  quality = 4; // 随从品质
+	required int32  throunghLv = 5; // 随从突破等级
+	required int32  slot = 6; // 装备位位置信息(10以后表示援阵暗卫位置)
+	required int32  fromation = 7; // 战斗位位置信息
+	optional bytes body = 8;// 消息体
+	repeated VO_Esse_Prop_Detail2  props  = 9;//技能信息
+}

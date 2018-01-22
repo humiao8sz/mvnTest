@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/PalaceM2_CODE_Server/!svn/ver/18992/PalaceM2_mys_cn_Server/trunk/src/test/java/testcom/tools/redisLock
+END
+RedissonManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/PalaceM2_CODE_Server/!svn/ver/18992/PalaceM2_mys_cn_Server/trunk/src/test/java/testcom/tools/redisLock/RedissonManager.java
+END
+DistributedRedisLock.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/PalaceM2_CODE_Server/!svn/ver/19025/PalaceM2_mys_cn_Server/trunk/src/test/java/testcom/tools/redisLock/DistributedRedisLock.java
+END

@@ -1,0 +1,23 @@
+{
+	"gamecode" : "PalaceM2_cn_cn",
+	"pfcode" : "hwy_android",
+	"productId" : "18",
+	"oprId" : "18004",
+	"loginKey" : "fxv)%Fq0NrQvG)eM",
+	"payKey" : "t^tQG$g#IZv^F2v6",
+	"appId" : "50006",
+	"appKey" : "D^Yt7Jb3uiF64#xjLhy37fY^62s",
+	"loginAPI" : "http://sdk.haowanyou.com/gf/app/v1.0/getUserInfo.do",
+	"clientEncryptFlag" : false,
+	"clientEncryptKey" : "123",
+	"verifyHandlerClassName":"com.agileeagle.mobile.proxy.platform.hwy.HwyVerifyHandler",
+	"callbackHandlerClassName":"com.agileeagle.mobile.proxy.platform.hwy.HwyCallbackHandler",
+	"proxyHandlerClassName":"com.agileeagle.mobile.proxy.platform.DefaultProxyHandler",
+	"loginHandlerClassName":"com.agileeagle.mobile.proxy.game.DefaultLoginHandler",
+	"domain" : "http://s#sid#.haowanyou.com",
+	"ticketApi" : "/mobile/ticket.do",
+	"loginApi" : "/mobile/login.do",
+	"imprestApi" : "/mobile/api.do",
+	"gameApi" : "/mobile/api.do",
+	"servers" : ["180019999","180010000","180040000","180049999","180049998","180040001~180040999","180750001~180750999"]
+}
