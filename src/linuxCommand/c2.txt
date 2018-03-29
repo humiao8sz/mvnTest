@@ -1,0 +1,376 @@
+jstat
+    1. jstat -gc pid
+            可以显示gc的信息，查看gc的次数，及时间。
+            其中最后五项，分别是young gc的次数，young gc的时间，full gc的次数，full gc的时间，gc的总时间。
+    2.jstat -gccapacity pid
+            可以显示，VM内存中三代（young,old,perm）对象的使用和占用大小，
+            如：PGCMN显示的是最小perm的内存使用量，PGCMX显示的是perm的内存最大使用量，
+       PGC是当前新生成的perm内存占用量，PC是但前perm内存占用量。
+            其他的可以根据这个类推， OC是old内纯的占用量。
+     3.jstat -gcutil pid
+            统计gc信息统计。
+     4.jstat -gcnew pid
+           年轻代对象的信息。
+     5.jstat -gcnewcapacity pid
+           年轻代对象的信息及其占用量。
+
+     6.jstat -gcold pid
+
+          old代对象的信息。
+
+     7.stat -gcoldcapacity pid
+
+          old代对象的信息及其占用量。
+
+     8.jstat -gcpermcapacity pid
+
+          perm对象的信息及其占用量。
+
+     9.jstat -class pid
+
+          显示加载class的数量，及所占空间等信息。
+     10.jstat -compiler pid
+
+          显示VM实时编译的数量等信息。
+
+     11.stat -printcompilation pid
+
+          当前VM执行的信息。
+
+        一些术语的中文解释：
+
+         S0C：年轻代中第一个survivor（幸存区）的容量 (字节)
+         S1C：年轻代中第二个survivor（幸存区）的容量 (字节)
+         S0U：年轻代中第一个survivor（幸存区）目前已使用空间 (字节)
+         S1U：年轻代中第二个survivor（幸存区）目前已使用空间 (字节)
+           EC：年轻代中Eden（伊甸园）的容量 (字节)
+           EU：年轻代中Eden（伊甸园）目前已使用空间 (字节)
+           OC：Old代的容量 (字节)
+           OU：Old代目前已使用空间 (字节)
+           PC：Perm(持久代)的容量 (字节)
+           PU：Perm(持久代)目前已使用空间 (字节)
+         YGC：从应用程序启动到采样时年轻代中gc次数
+       YGCT：从应用程序启动到采样时年轻代中gc所用时间(s)
+         FGC：从应用程序启动到采样时old代(全gc)gc次数
+       FGCT：从应用程序启动到采样时old代(全gc)gc所用时间(s)
+         GCT：从应用程序启动到采样时gc用的总时间(s)
+
+    NGCMN：年轻代(young)中初始化(最小)的大小 (字节)
+
+    NGCMX：年轻代(young)的最大容量 (字节)
+
+        NGC：年轻代(young)中当前的容量 (字节)
+
+   OGCMN：old代中初始化(最小)的大小 (字节)
+
+   OGCMX：old代的最大容量 (字节)
+
+       OGC：old代当前新生成的容量 (字节)
+
+   PGCMN：perm代中初始化(最小)的大小 (字节)
+
+   PGCMX：perm代的最大容量 (字节)  
+
+       PGC：perm代当前新生成的容量 (字节)
+
+          S0：年轻代中第一个survivor（幸存区）已使用的占当前容量百分比
+
+         S1：年轻代中第二个survivor（幸存区）已使用的占当前容量百分比
+
+           E：年轻代中Eden（伊甸园）已使用的占当前容量百分比
+
+           O：old代已使用的占当前容量百分比
+
+           P：perm代已使用的占当前容量百分比
+
+  S0CMX：年轻代中第一个survivor（幸存区）的最大容量 (字节)
+
+ S1CMX ：年轻代中第二个survivor（幸存区）的最大容量 (字节)
+
+    ECMX：年轻代中Eden（伊甸园）的最大容量 (字节)
+
+       DSS：当前需要survivor（幸存区）的容量 (字节)（Eden区已满）
+
+          TT： 持有次数限制
+
+       MTT ： 最大持有次数限制
+
+jstack
+
+
+   jstack用于打印出给定的Java进程ID或core file或远程调试服务的Java堆栈信息，如果是在64位机器上，需要指定选项"-J-d64"，Windows的jstack使用方式只支持以下的这种方式：jstack [-l] pid
+
+如果java程序崩溃生成core文件，jstack工具可以用来获得core文件的java stack和native stack的信息，从而可以轻松地知道java程序是如何崩溃和在程序何处发生问题。另外，jstack工具还可以附属到正在运行的java程序中，看到当时运行的java程序的java stack和native stack的信息, 如果现在运行的java程序呈现hung的状态，jstack是非常有用的。
+
+需要注意的问题:
+
+l 不同的 JAVA虚机的线程 DUMP的创建方法和文件格式是不一样的，不同的 JVM版本， dump信息也有差别。
+
+l 在实际运行中，往往一次 dump的信息，还不足以确认问题。建议产生三次 dump信息，如果每次 dump都指向同一个问题，我们才确定问题的典型性。 
+
+2、命令格式
+
+$jstack [ option ] pid
+
+$jstack [ option ] executable core
+
+$jstack [ option ] [server-id@]remote-hostname-or-IP
+
+参数说明:
+
+pid: java应用程序的进程号,一般可以通过jps来获得;
+
+executable:产生core dump的java可执行程序;
+
+core:打印出的core文件;
+
+remote-hostname-or-ip:远程debug服务器的名称或IP;
+
+server-id: 唯一id,假如一台主机上多个远程debug服务;
+
+ 
+
+示例:
+
+$jstack –l 23561
+
+ 
+
+线程分析:
+
+一般情况下，通过jstack输出的线程信息主要包括：jvm自身线程、用户线程等。其中jvm线程会在jvm启动时就会存在。对于用户线程则是在用户访问时才会生成。
+
+l jvm线程：
+
+在线程中，有一些 JVM内部的后台线程，来执行譬如垃圾回收，或者低内存的检测等等任务，这些线程往往在JVM初始化的时候就存在，如下所示：
+
+"Attach Listener" daemon prio=10 tid=0x0000000052fb8000 nid=0xb8f waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+ 
+   Locked ownable synchronizers:
+        - None
+destroyJavaVM" prio=10 tid=0x00002aaac1225800 nid=0x7208 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+ 
+   Locked ownable synchronizers:
+        - None
+l 用户级别的线程
+
+还有一类线程是用户级别的，它会根据用户请求的不同而发生变化。该类线程的运行情况往往是我们所关注的重点。而且这一部分也是最容易产生死锁的地方。
+
+"qtp496432309-42" prio=10 tid=0x00002aaaba2a1800 nid=0x7580 waiting on condition [0x00000000425e9000]
+   java.lang.Thread.State: TIMED_WAITING (parking)
+        at sun.misc.Unsafe.park(Native Method)
+        - parking to wait for  <0x0000000788cfb020> (a java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject)
+        at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:198)
+        at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2025)
+        at org.eclipse.jetty.util.BlockingArrayQueue.poll(BlockingArrayQueue.java:320)
+        at org.eclipse.jetty.util.thread.QueuedThreadPool$2.run(QueuedThreadPool.java:479)
+        at java.lang.Thread.run(Thread.java:662)
+ 
+   Locked ownable synchronizers:
+        - None
+从上述的代码示例中我们可以看到该用户线程的以下几类信息：
+
+Ø 线程的状态：waiting on condition(等待条件发生)
+
+Ø 线程的调用情况；
+
+Ø 线程对资源的锁定情况；
+
+ 
+
+线程的状态分析：
+
+正如我们刚看到的那样，线程的状态是一个重要的指标，它会显示在线程每行结尾的地方。那么线程常见的有哪些状态呢？线程在什么样的情况下会进入这种状态呢？我们能从中发现什么线索？
+
+l Runnable
+
+该状态表示线程具备所有运行条件，在运行队列中准备操作系统的调度，或者正在运行。 
+
+l Waiton condition 
+
+该状态出现在线程等待某个条件的发生。具体是什么原因，可以结合stacktrace来分析。最常见的情况是线程在等待网络的读写，比如当网络数据没有准备好读时，线程处于这种等待状态，而一旦有数据准备好读之后，线程会重新激活，读取并处理数据。在 Java引入 NIO之前，对于每个网络连接，都有一个对应的线程来处理网络的读写操作，即使没有可读写的数据，线程仍然阻塞在读写操作上，这样有可能造成资源浪费，而且给操作系统的线程调度也带来压力。在 NIO里采用了新的机制，编写的服务器程序的性能和可扩展性都得到提高。 
+
+如果发现有大量的线程都在处在 Wait on condition，从线程 stack看， 正等待网络读写，这可能是一个网络瓶颈的征兆。因为网络阻塞导致线程无法执行。一种情况是网络非常忙，几乎消耗了所有的带宽，仍然有大量数据等待网络读写；另一种情况也可能是网络空闲，但由于路由等问题，导致包无法正常的到达。所以要结合系统的一些性能观察工具来综合分析，比如 netstat统计单位时间的发送包的数目，如果很明显超过了所在网络带宽的限制 ; 观察 cpu的利用率，如果系统态的 CPU时间，相对于用户态的 CPU时间比例较高；如果程序运行在 Solaris 10平台上，可以用 dtrace工具看系统调用的情况，如果观察到 read/write的系统调用的次数或者运行时间遥遥领先；这些都指向由于网络带宽所限导致的网络瓶颈。 
+
+另外一种出现 Wait on condition的常见情况是该线程在 sleep，等待 sleep的时间到了时候，将被唤醒。 
+
+l Waitingfor monitor entry 和 in Object.wait() 
+
+在多线程的 JAVA程序中，实现线程之间的同步，就要说说Monitor。Monitor是Java中用以实现线程之间的互斥与协作的主要手段，它可以看成是对象或者 Class的锁。每一个对象都有，也仅有一个 monitor。下面这个图，描述了线程和 Monitor之间关系，以及线程的状态转换图： 
+
+ 
+
+从图中可以看出，每个 Monitor在某个时刻，只能被一个线程拥有，该线程就是 “Active Thread”，而其它线程都是 “Waiting Thread”，分别在两个队列 “ Entry Set”和 “Wait Set”里面等候。在 “Entry Set”中等待的线程状态是 “Waiting for monitorentry”，而在 “Wait Set”中等待的线程状态是“in Object.wait()”。 
+
+先看 “Entry Set”里面的线程。我们称被 synchronized保护起来的代码段为临界区。当一个线程申请进入临界区时，它就进入了 “Entry Set”队列。对应的 code就像： 
+
+synchronized(obj){ 
+
+......... 
+
+} 
+
+这时有两种可能性： 
+
+该 monitor不被其它线程拥有，Entry Set里面也没有其它等待线程。本线程即成为相应类或者对象的 Monitor的 Owner，执行临界区的代码 。此时线程将处于Runnable状态；
+
+该 monitor被其它线程拥有，本线程在 Entry Set队列中等待。此时dump的信息显示“waiting for monitor entry”。
+
+"Thread-0" prio=10 tid=0x08222eb0 nid=0x9 waiting for monitor entry [0xf927b000..0xf927bdb8] 
+at testthread.WaitThread.run(WaitThread.java:39) 
+- waiting to lock <0xef63bf08> (a java.lang.Object) 
+- locked <0xef63beb8> (a java.util.ArrayList) 
+at java.lang.Thread.run(Thread.java:595) 
+临界区的设置，是为了保证其内部的代码执行的原子性和完整性。但是因为临界区在任何时间只允许线程串行通过，这和我们多线程的程序的初衷是相反的。如果在多线程的程序中，大量使用 synchronized，或者不适当的使用了它，会造成大量线程在临界区的入口等待，造成系统的性能大幅下降。如果在线程 DUMP中发现了这个情况，应该审查源码，改进程序。 
+
+现在我们再来看现在线程为什么会进入 “Wait Set”。当线程获得了 Monitor，进入了临界区之后，如果发现线程继续运行的条件没有满足，它则调用对象（一般就是被 synchronized 的对象）的 wait() 方法，放弃了 Monitor，进入 “Wait Set”队列。只有当别的线程在该对象上调用了 notify() 或者 notifyAll() ， “ Wait Set”队列中线程才得到机会去竞争，但是只有一个线程获得对象的Monitor，恢复到运行态。在 “Wait Set”中的线程， DUMP中表现为： in Object.wait()，类似于： 
+
+"Thread-1" prio=10 tid=0x08223250 nid=0xa in Object.wait() [0xef47a000..0xef47aa38] 
+at java.lang.Object.wait(Native Method) 
+- waiting on <0xef63beb8> (a java.util.ArrayList) 
+at java.lang.Object.wait(Object.java:474) 
+at testthread.MyWaitThread.run(MyWaitThread.java:40) 
+- locked <0xef63beb8> (a java.util.ArrayList) 
+at java.lang.Thread.run(Thread.java:595) 
+仔细观察上面的 DUMP信息，你会发现它有以下两行： 
+
+² locked <0xef63beb8> (ajava.util.ArrayList) 
+
+² waiting on <0xef63beb8> (ajava.util.ArrayList) 
+
+这里需要解释一下，为什么先 lock了这个对象，然后又 waiting on同一个对象呢？让我们看看这个线程对应的代码： 
+
+synchronized(obj){
+
+......... 
+
+obj.wait();
+
+......... 
+
+} 
+
+线程的执行中，先用 synchronized 获得了这个对象的 Monitor（对应于 locked <0xef63beb8> ）。当执行到 obj.wait(), 线程即放弃了 Monitor的所有权，进入 “wait set”队列（对应于 waiting on<0xef63beb8> ）。 
+
+往在你的程序中，会出现多个类似的线程，他们都有相似的 dump也可能是正常的。比如，在程序中有多个服务线程，设计成从一个队列里面读取请求数据。这个队列就是 lock以及 waiting on的对象。当队列为空的时候，这些线程都会在这个队列上等待，直到队列有了数据，这些线程被notify，当然只有一个线程获得了 lock，继续执行，而其它线程继续等待。 
+
+
+
+
+jmap
+
+
+
+
+jmap 的用途是为了展示java进程的内存映射信息，或者堆内存详情
+
+常用的参数如下：
+
+histo
+
+jmap -histo pid 展示class的内存情况
+
+展示的信息为编号，实例数，字节，类名
+
+ 
+
+ 
+
+heap
+
+jmap -heap pid 展示pid的整体堆信息
+
+复制代码
+    jmap -heap 2464  
+    JVM version is 16.3-b01  
+      
+    using thread-local object allocation.  
+    Parallel GC with 13 thread(s)  
+      
+    Heap Configuration:  
+       MinHeapFreeRatio = 40  
+       MaxHeapFreeRatio = 70  
+       MaxHeapSize      = 8436842496 (8046.0MB)  
+       NewSize          = 5439488 (5.1875MB)  
+       MaxNewSize       = 17592186044415 MB  
+       OldSize          = 5439488 (5.1875MB)  
+       NewRatio         = 2  
+       SurvivorRatio    = 8  
+       PermSize         = 21757952 (20.75MB)  
+       MaxPermSize      = 88080384 (84.0MB)  
+      
+    Heap Usage:  
+    PS Young Generation  
+    Eden Space:  
+       capacity = 87883776 (83.8125MB)  
+       used     = 31053080 (29.614524841308594MB)  
+       free     = 56830696 (54.197975158691406MB)  
+       35.33425782706469% used  
+    From Space:  
+       capacity = 13828096 (13.1875MB)  
+       used     = 196608 (0.1875MB)  
+       free     = 13631488 (13.0MB)  
+       1.4218009478672986% used  
+    To Space:  
+       capacity = 16384000 (15.625MB)  
+       used     = 0 (0.0MB)  
+       free     = 16384000 (15.625MB)  
+       0.0% used  
+    PS Old Generation  
+       capacity = 156172288 (148.9375MB)  
+       used     = 27098208 (25.842864990234375MB)  
+       free     = 129074080 (123.09463500976562MB)  
+       17.35148299805917% used  
+    PS Perm Generation  
+       capacity = 88080384 (84.0MB)  
+       used     = 50847592 (48.492042541503906MB)  
+       free     = 37232792 (35.507957458496094MB)  
+       57.728622073218936% used  
+
+说明如下
+Parallel GC with 13 thread(s)   #13个gc线程  
+  
+Heap Configuration:#堆内存初始化配置  
+   MinHeapFreeRatio = 40  #-XX:MinHeapFreeRatio设置JVM堆最小空闲比率  
+   MaxHeapFreeRatio = 70  #-XX:MaxHeapFreeRatio设置JVM堆最大空闲比率  
+   MaxHeapSize      = 8436842496 (8046.0MB)#-XX:MaxHeapSize=设置JVM堆的最大大小  
+   NewSize          = 5439488 (5.1875MB) #-XX:NewSize=设置JVM堆的‘新生代’的默认大小  
+   MaxNewSize       = 17592186044415 MB  #-XX:MaxNewSize=设置JVM堆的‘新生代’的最大大小  
+   OldSize          = 5439488 (5.1875MB) #-XX:OldSize=设置JVM堆的‘老生代’的大小  
+   NewRatio         = 2 #-XX:NewRatio=:‘新生代’和‘老生代’的大小比率  
+   SurvivorRatio    = 8 #-XX:SurvivorRatio=设置年轻代中Eden区与Survivor区的大小比值  
+   PermSize         = 21757952 (20.75MB) #-XX:PermSize=<value>:设置JVM堆的‘永生代’的初始大小  
+   MaxPermSize      = 88080384 (84.0MB) #-XX:MaxPermSize=<value>:设置JVM堆的‘永生代’的最大大小  
+  
+Heap Usage:  
+PS Young Generation  
+Eden Space:#Eden区内存分布  
+   capacity = 87883776 (83.8125MB)  
+   used     = 31053080 (29.614524841308594MB)  
+   free     = 56830696 (54.197975158691406MB)  
+   35.33425782706469% used  
+From Space:#其中一个Survivor区的内存分布  
+   capacity = 13828096 (13.1875MB)  
+   used     = 196608 (0.1875MB)  
+   free     = 13631488 (13.0MB)  
+   1.4218009478672986% used  
+To Space:#另一个Survivor区的内存分布  
+   capacity = 16384000 (15.625MB)  
+   used     = 0 (0.0MB)  
+   free     = 16384000 (15.625MB)  
+   0.0% used  
+PS Old Generation#当前的Old区内存分布  
+   capacity = 156172288 (148.9375MB)  
+   used     = 27098208 (25.842864990234375MB)  
+   free     = 129074080 (123.09463500976562MB)  
+   17.35148299805917% used  
+PS Perm Generation#当前的 “永生代” 内存分布  
+   capacity = 88080384 (84.0MB)  
+   used     = 50847592 (48.492042541503906MB)  
+   free     = 37232792 (35.507957458496094MB)  
+   57.728622073218936% used 
+
+dump
+导出的文件可以供分析用，比如jhat或者mat，以便查找内存溢出原因

@@ -23,6 +23,7 @@ public class PloyShopLimitVO {
 	public void setType(byte type) {
 		this.type = type;
 	}
+	
 	public Date getStartTime() {
 		return startTime;
 	}

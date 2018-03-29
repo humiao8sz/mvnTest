@@ -24,8 +24,7 @@ public class ClassIdentity {
         } catch (Exception e) {  
             e.printStackTrace();  
         }  
-    }  
-    
+    }   
     public void testClassIdentity2() {
     	
     	
