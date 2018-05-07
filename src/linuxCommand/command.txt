@@ -2,3 +2,9 @@ jstack -l pid >1.txt
 jmap -dump:format=b,file=heap.bin pid
 top -Hp pid //查询进程中各线程的CPU和内存占用情况
 jstack pid | grep 5431(线程ID，十六进制) 
+
+sudo ln -s 源目录 目标快捷方式
+比如你要在/etc下面建立一个叫LXBC553的快捷方式，指向/home/LXBC，那就是
+sudo ln -s /home/LXBC /etc/LXBC553
+
+sudo ln -s /usr/java/jdk1.7.0_80/bin/jstack /usr/bin/jstack
