@@ -10,7 +10,7 @@ public class GenerateClass {
 		// String protoFile = "BbjxMsg.proto";// D:\WorkSpace\TT\src\proto
 		// String strCmd = "D:/lib/proto/protoc.exe D:/workspace2/mvnTest/src/proto/"+ protoFile;
 		String strCmd =
-				"D:/lib/proto/protobuf-master/src/protoc.exe -I=D:/workspace2/mvnTest/src --java_out=D:/workspace2/mvnTest/src D:/workspace2/mvnTest/src/BbjxMsg.proto";
+				"D:/lib/proto/protobuf-master/src/protoc.exe -I=D:/workspace2/mvnTest/src --java_out=D:/workspace2/mvnTest/src D:/workspace2/mvnTest/src/FightMsg.proto";
 		try{
 			Runtime.getRuntime().exec(strCmd);
 		}catch(IOException e){
