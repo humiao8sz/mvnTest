@@ -8,3 +8,12 @@ sudo ln -s 源目录 目标快捷方式
 sudo ln -s /home/LXBC /etc/LXBC553
 
 sudo ln -s /usr/java/jdk1.7.0_80/bin/jstack /usr/bin/jstack
+
+
+备份：
+C:\Program Files\MySQL\MySQL Server 5.1\bin>mysqldump -uroot -p123 sonar > sonar
+.sql
+
+还原：
+C:\Program Files\MySQL\MySQL Server 5.1\bin>mysql  -uroot  -p123 sonar < sonar.s
+ql

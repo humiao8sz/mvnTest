@@ -4,9 +4,113 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	for ( var propName in window) {
-		document.write(propName+"-");
+	/* 	for ( var propName in window) {
+	 document.write(propName+"-");
+	 } */
+	 
+	 
+	 
+	/* 	switch ("hello world") {
+		case "hello" + " world":
+			alert("Greeting was found.");
+			break;
+		case "goodbye":
+			alert("Closing was found.");
+			break;
+		default:
+			alert("Unexpected message was found.");
+		}
+	 */
+
+/* 	var testMethod = function sum(num1, num2) {
+		 alert(num1 + num2);
 	}
+	testMethod(1,2); */
+	
+	
+/* 	var allFives = new Date(2005, 4, 5, 17, 55, 55);
+	alert(allFives); */
+	
+	
+	
+
+/* 	动态原型
+	function Person(name, age, job) {
+	 //属性
+	 this.name = name;
+	 this.age = age;
+	 this.job = job;
+	 //方法
+	 if (typeof this.sayName != "function") {
+	 Person.prototype.sayName = function() {
+	 alert(this.name);
+	 };
+	 }
+	 }
+	 var friend = new Person("Nicholas", 29, "Software Engineer");
+	 friend.sayName(); 
+*/
+
+	/*	组合继承
+	 function SuperType(name) {
+	 this.name = name;
+	 this.colors = [ "red", "blue", "green" ];
+	 }
+	 SuperType.prototype.sayName = function() {
+	 alert(this.name);
+	 };
+	 function SubType(name, age) {
+	 //继承属性
+	 SuperType.call(this, name);
+	 this.age = age;
+	 }
+	 //继承方法
+	 SubType.prototype = new SuperType();
+	 SubType.prototype.constructor = SubType;
+	 SubType.prototype.sayAge = function() {
+	 alert(this.age);
+	 };
+	 var instance1 = new SubType("Nicholas", 29);
+	 instance1.colors.push("black");
+	 alert(instance1.colors); //"red,blue,green,black"
+	 instance1.sayName(); //"Nicholas";
+	 instance1.sayAge(); //29
+	 var instance2 = new SubType("Greg", 27);
+	 alert(instance2.colors); //"red,blue,green"
+	 instance2.sayName(); //"Greg";
+	 instance2.sayAge(); //27
+	 */
+	 
+	 
+/** 寄生组合式继承 最理想
+	function object(o) {
+		function F() {
+		}
+		F.prototype = o;
+		return new F();
+	}
+	function inheritPrototype(subType, superType) {
+		var prototype = object(superType.prototype); //创建对象
+		prototype.constructor = subType; //增强对象
+		subType.prototype = prototype; //指定对象
+	}
+
+	function SuperType(name) {
+		this.name = name;
+		this.colors = [ "red", "blue", "green" ];
+	}
+	SuperType.prototype.sayName = function() {
+		alert(this.name);
+	};
+	function SubType(name, age) {
+		SuperType.call(this, name);
+		this.age = age;
+	}
+	inheritPrototype(SubType, SuperType);
+	SubType.prototype.sayAge = function() {
+		alert(this.age);
+	};
+*/	
 </script>
 
 </head>
