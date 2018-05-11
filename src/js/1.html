@@ -111,10 +111,204 @@
 		alert(this.age);
 	};
 */	
-</script>
 
+
+
+/**
+	var factorial = (function f(num) {
+		if (num <= 1) {
+			return 1;
+		} else {
+			return num * f(num - 1);
+		}
+	});
+*/	
+
+
+/**
+	function outputNumbers(count) {
+		(function() { //块作用域
+			for (var i = 0; i < count; i++) {
+				alert(i);
+			}
+		})();
+		alert(i); //导致一个错误！
+	}
+*/	
+
+
+/**
+    (function(){
+		var now = new Date();
+		if (now.getMonth() == 0 && now.getDate() == 1){
+			alert("Happy new year!");
+		}
+	})();
+*/	
+
+
+
+/**
+	function MyObject(){
+		//私有变量和私有函数
+		var privateVariable = 10;
+			function privateFunction(){
+			return false;
+		}
+		//特权方法
+		this.publicMethod = function (){
+			privateVariable++;
+			return privateFunction();
+		};
+	}
+*/	
+
+
+/**		
+	function Person(name){
+		this.getName = function(){
+			return name;
+		};
+		this.setName = function (value) {
+			name = value;
+		};
+	}
+*/		
+
+
+//	window.open("http://www.baidu.com/","wroxWindow","height=700,width=900,top=10,left=10,resizable=yes");
+/**
+	//设置超时调用
+	var timeoutId = setTimeout(function() {
+		alert("Hello world!");
+	}, 1000);
+	//注意：把它取消
+	clearTimeout(timeoutId);
+	
+	//推荐的调用方式
+	setInterval(function() {
+		alert("Hello world!");
+	}, 10000);
+*/
+
+
+/**
+	var num = 0;
+	var max = 10;
+	var intervalId = null;
+	function incrementNumber() {
+		num++;
+		//如果执行次数达到了max 设定的值，则取消后续尚未执行的调用
+		if (num == max) {
+			clearInterval(intervalId);
+			alert("Done");
+		}
+	}
+	intervalId = setInterval(incrementNumber, 500);
+*/
+
+
+	//location.assign("http://www.baidu.com");
+	
+
+	//将URL 修改为"http://www.wrox.com/WileyCDA/#section1"
+	//location.hash = "#section1";
+	//将URL 修改为"http://www.wrox.com/WileyCDA/?q=javascript"
+	//location.search = "?q=javascript";
+	//将URL 修改为"http://www.yahoo.com/WileyCDA/"
+	//location.hostname = "www.yahoo.com";
+	//将URL 修改为"http://www.yahoo.com/mydir/"
+	//location.pathname = "mydir";
+	//将URL 修改为"http://www.yahoo.com:8080/WileyCDA/"
+	//location.port = 8080;
+	
+	
+/* 	setTimeout(function() {
+		location.replace("http://www.baidu.com/");
+	}, 1000); */
+	
+	
+	
+/* 	location.reload(); //重新加载（有可能从缓存中加载）
+	location.reload(true); //重新加载（从服务器重新加载） */
+	
+	
+/* 	//这样更好：检查sort 是不是函数
+	function isSortable(object) {
+		return typeof object.sort == "function";
+	} */
+	
+	
+
+/* 	function convertToArray(nodes) {
+		var array = null;
+		try {
+			array = Array.prototype.slice.call(nodes, 0); //针对非IE 浏览器
+		} catch (ex) {
+			array = new Array();
+			for (var i = 0, len = nodes.length; i < len; i++) {
+				array.push(nodes[i]);
+			}
+		}
+		return array;
+	}
+ */	
+</script>
 </head>
 <body>
 
+
 </body>
+<script>
+/* 	var someNode = document.getElementById("test1");
+ 	if (someNode.nextSibling === null) {
+		alert("Last node in the parent’s childNodes list.");
+	} else if (someNode.previousSibling === null) {
+		alert("First node in the parent’s childNodes list.");
+	} */
+	
+/* 	var someNode = document.getElementsByTagName("body");
+	alert(someNode[0].childNodes[0]);
+	alert(someNode[0].childNodes[1]);
+	alert(someNode[0].childNodes[2]); */
+	
+
+/* 	var element = document.createElement("div");
+	element.className = "message";
+	var textNode = document.createTextNode("Hello world!");
+	element.appendChild(textNode);
+	document.body.appendChild(element); */
+	
+/* 
+	var element = document.createElement("div");
+	element.className = "message";
+	var textNode = document.createTextNode("Hello world!");
+	element.appendChild(textNode);
+	var anotherTextNode = document.createTextNode("Yippee!");
+	element.appendChild(anotherTextNode);
+	document.body.appendChild(element);
+	alert(element.childNodes.length); //2
+	element.normalize();
+	alert(element.childNodes.length); //1
+	alert(element.firstChild.nodeValue); // "Hello world!Yippee!"
+*/
+
+
+
+
+/* 	var element = document.createElement("div");
+	element.className = "message";
+	var textNode = document.createTextNode("Hello world!");
+	element.appendChild(textNode);
+	document.body.appendChild(element);
+	var newNode = element.firstChild.splitText(5);
+	alert(element.firstChild.nodeValue); //"Hello"
+	alert(newNode.nodeValue); //" world!"
+	alert(element.childNodes.length); //2 
+*/
+
+
+
+	
+</script> 	
 </html>
