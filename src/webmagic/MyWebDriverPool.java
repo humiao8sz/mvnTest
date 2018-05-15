@@ -13,6 +13,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -35,6 +37,7 @@ public class MyWebDriverPool {
 
 	private AtomicInteger stat = new AtomicInteger(STAT_RUNNING);
 
+	private String cookies = "";
 	/*
 	 * new fields for configuring phantomJS
 	 */
@@ -130,6 +133,14 @@ public class MyWebDriverPool {
 		} else if (driver.equals(DRIVER_PHANTOMJS)) {
 			mDriver = new PhantomJSDriver(sCaps);
 		}
+		if(cookies !=null && !"".equals(cookies)){
+			for(String cookie : cookies.split(";")){
+				int idx = cookie.indexOf("=");
+		        Cookie c1 = new Cookie(cookie.substring(0,idx).trim(), cookie.substring(idx+1,cookie.length()).trim());  
+		        mDriver.manage().addCookie(c1);
+			}
+			mDriver.navigate().refresh();
+		}
 	}
 
 	/**
@@ -159,6 +170,11 @@ public class MyWebDriverPool {
 	 */
 	private BlockingDeque<WebDriver> innerQueue = new LinkedBlockingDeque<WebDriver>();
 
+	public MyWebDriverPool(int capacity,String cookies) {
+		this(capacity);
+		this.cookies = cookies;
+	}
+	
 	public MyWebDriverPool(int capacity) {
 		this.capacity = capacity;
 	}

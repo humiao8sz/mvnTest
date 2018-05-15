@@ -25,7 +25,7 @@ public class Test {
 		synchronized(l){
 			System.out.println(111);
 		}*/
-		Map<Integer, Double> map = new HashMap<Integer, Double>();
+/*		Map<Integer, Double> map = new HashMap<Integer, Double>();
 		map.put(1, 1.0);
 		map.put(1, 2.0);
 		map.put(1, 3.0);
@@ -33,6 +33,9 @@ public class Test {
 		map.put(1, 5.0);
 		for(int type : map.keySet()) {
 			map.put(type, map.get(type)*10);
-		}
+		}*/
+		String string = "12,3456";
+		System.out.println(string.substring(0,string.indexOf(",")));
+		System.out.println(string.substring(string.indexOf(",")+1,string.length()));
 	}
 }

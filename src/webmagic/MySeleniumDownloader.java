@@ -33,6 +33,18 @@ public class MySeleniumDownloader implements Downloader, Closeable {
 
 	private static final String DRIVER_PHANTOMJS = "phantomjs";
 
+	private String cookies = "";
+
+	/**
+	 * 鏂板缓
+	 *
+	 * @param chromeDriverPath chromeDriverPath
+	 */
+	public MySeleniumDownloader(String chromeDriverPath,String cookies) {
+		this(chromeDriverPath);
+		this.cookies = cookies;
+	}
+	
 	/**
 	 * 鏂板缓
 	 *
@@ -122,7 +134,7 @@ public class MySeleniumDownloader implements Downloader, Closeable {
 	private void checkInit() {
 		if (webDriverPool == null) {
 			synchronized (this) {
-				webDriverPool = new MyWebDriverPool(poolSize);
+				webDriverPool = new MyWebDriverPool(poolSize,cookies);
 			}
 		}
 	}

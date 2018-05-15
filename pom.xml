@@ -115,6 +115,18 @@
 			<artifactId>commons-io</artifactId>
 			<version>1.3.2</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.apache.cocoon</groupId>
+			<artifactId>cocoon-captcha-impl</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.asprise.ocr</groupId>
+			<artifactId>java-ocr-api</artifactId>
+			<version>15.3.0.3</version>
+		</dependency>
 	</dependencies>
 
 </project>

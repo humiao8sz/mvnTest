@@ -51,6 +51,7 @@ public class ZhihuPageProcessor implements PageProcessor {
     }
 
     public static void main(String[] args) {
+    	String cookie = "q_c1=5b4bcd16dcd34af0944a211b6df7beea|1526374474000|1526374474000; _zap=71a5907d-782f-4b21-a38f-1d045da5805f; tgw_l7_route=7139e401481ef2f46ce98b22af4f4bed; _xsrf=a7b45c88-5207-4c61-a9b9-16c65396fff2; capsion_ticket=2|1:0|10:1526379929|14:capsion_ticket|44:YTAxNzU1NjFlNWNmNDNlYjgxODM5YWQ1M2I2NDBhZDk=|6e7245144d71b996cfea4df61d892b819d834c0de3c8ac31096afd67e6c21909; z_c0=2|1:0|10:1526379946|4:z_c0|80:MS4xcl9oaUJ3QUFBQUFtQUFBQVlBSlZUYW9ENkZ2bHBZTkZibk45di11aU03WDAwNGFreV9EQTBnPT0=|044950aece49cbae2fc0565afdc728fec541ff809f5e4cf24b64e457ed07a2f7";
         System.setProperty("selenuim_config", "D:\\workspace2\\mvnTest\\config.ini");
         Spider.create(new ZhihuPageProcessor()).addUrl("https://www.zhihu.com/question/38515926").addPipeline(new MyFilePipeline("D:\\workspace2\\mvnTest"))
         .downloader(new MySeleniumDownloader("D:\\workspace2\\mvnTest\\chromedriver.exe"))
